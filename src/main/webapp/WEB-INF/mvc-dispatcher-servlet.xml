@@ -11,6 +11,7 @@
 	<mvc:resources location="/js/" mapping="/js/**" />
 	<mvc:resources location="/vendor/" mapping="/vendor/**" />
 	<mvc:resources location="/resources/" mapping="/resources/**" />
+    <context:component-scan base-package="com.overcome.test" />
 
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:messages" />
@@ -22,6 +23,7 @@
 		<property name="cookieName" value="myAppLocaleCookie" />
 		<property name="cookieMaxAge" value="3600" />
 	</bean>
+	
 
 	<mvc:interceptors>
 		<bean
@@ -39,17 +41,22 @@
 			</list>
 		</property>
 	</bean>
+		
 
 	<bean id="OfyService" class="com.overcome.dao.OfyService" factory-method="getInstance">
 		<constructor-arg name="classes">
 			<array value-type="java.lang.Class">
 				<value>com.overcome.test.entity.ExampleEntity</value>
+				<value>com.overcome.test.entity.TicketEntity</value>
+				<value>com.overcome.test.entity.UserEntity</value>
 			</array>
 		</constructor-arg>
 	</bean>
 
 	<bean id="ServiceFactory" class="com.overcome.test.ServiceFactory" factory-method="getInstance">
 		<property name="exampleEntityService" ref="exampleEntityService" />
+		<property name="ticketEntityService" ref="ticketEntityService" />
+		<property name="userEntityService" ref="userEntityService" />
 	</bean>
 
 	<!-- USER -->
@@ -60,9 +67,28 @@
 		class="com.overcome.test.service.impl.ExampleEntityServiceImpl">
 		<property name="objectifyDao" ref="exampleEntityDao" />
 	</bean>
-	
+
+	<bean id="ticketEntityDao" class="com.overcome.dao.ObjectifyDao">
+		<constructor-arg name="clazz" value="com.overcome.test.entity.TicketEntity" />
+	</bean>
+	<bean id="ticketEntityService"
+		class="com.overcome.test.service.impl.TicketEntityServiceImpl">
+		<property name="objectifyDao" ref="ticketEntityDao" />
+	</bean>
+	<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<constructor-arg name="strength" value="10" />
+	</bean>
+
+	<bean id="userEntityDao" class="com.overcome.dao.ObjectifyDao">
+		<constructor-arg name="clazz" value="com.overcome.test.entity.UserEntity" />
+	</bean>
+
+	<bean id="userEntityService"
+		  class="com.overcome.test.service.impl.UserEntityServiceImpl">
+		<property name="objectifyDao" ref="userEntityDao" />
+	</bean>
+
+
 	<!-- CONTROLLERS -->
-	
-	<bean id="GlobalController"   class="com.overcome.test.controller.GlobalController"  lazy-init="true" />
 
 </beans>
