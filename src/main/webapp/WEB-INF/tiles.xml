@@ -24,6 +24,32 @@
 		<put-attribute name="body" cascade="true" value="/WEB-INF/templates/pages/login.jsp" />
 	</definition>
 	
+	
+	
+	<!-- PAGINAS -->
+	<definition name="save-view" extends="base">
+		<put-attribute name="body" cascade="true" value="/WEB-INF/templates/pages/save.jsp" />
+	</definition>
+	
+	
+	<!-- PAGINAS -->
+	<definition name="getallby-view" extends="base">
+		<put-attribute name="body" cascade="true" value="/WEB-INF/templates/pages/getallby.jsp" />
+	</definition>
+	<!-- PAGINAS -->
+	<definition name="getall-view" extends="base">
+		<put-attribute name="body" cascade="true" value="/WEB-INF/templates/pages/getall.jsp" />
+	</definition>
+	<!-- PAGINAS -->
+	<definition name="sticket-view" extends="base">
+		<put-attribute name="body" cascade="true" value="/WEB-INF/templates/pages/saveticket.jsp" />
+	</definition>
+	<!-- PAGINAS -->
+	<definition name="edit-view" extends="base">
+		<put-attribute name="body" cascade="true" value="/WEB-INF/templates/pages/edit.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>
 
 <!-- Invoice -->

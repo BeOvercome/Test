@@ -64,5 +64,8 @@
 	<!-- CONTROLLERS -->
 	
 	<bean id="GlobalController"   class="com.overcome.test.controller.GlobalController"  lazy-init="true" />
+	
+	<bean id="TicketController" class="com.overcome.test.controller.TicketController" />
+	<bean id="UserController" class="com.overcome.test.controller.UserController" />
 
 </beans>
