@@ -1,6 +1,7 @@
 package com.overcome.test;
 
 import com.overcome.test.service.ExampleEntityService;
+import com.overcome.test.service.TicketService;
 
 public class ServiceFactory {
 
@@ -23,5 +24,15 @@ public class ServiceFactory {
 	}
 	public ExampleEntityService getExampleEntityService() {
 		return exampleEntityService;
+	}
+
+
+	private TicketService ticketService;
+
+	public void setTicketService(TicketService ticketService) {
+		this.ticketService = ticketService;
+	}
+	public TicketService getTicketService() {
+		return ticketService;
 	}
 }

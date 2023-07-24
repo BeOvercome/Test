@@ -35,7 +35,7 @@
     
     <http use-expressions="true" create-session="ifRequired" auto-config="true" disable-url-rewriting="true" authentication-manager-ref="authentication-manager">
 		<intercept-url pattern="/**" access="isAuthenticated()"/>
-		<form-login login-page="/login" authentication-failure-url="/loginfailed" default-target-url="/" always-use-default-target="true" />
+		<form-login login-page="/login" authentication-failure-url="/loginfailed" default-target-url="/ticket/listar" always-use-default-target="true" />
         <logout logout-success-url="/login" />
 <!--         <custom-filter after="BASIC_AUTH_FILTER" ref="urlFilter" /> -->
         
@@ -47,14 +47,20 @@
 <!--     </beans:bean> -->
     
 <!--     <beans:bean id="authSuccessHandler" class="com.overcome.test.security.AuthSuccessHandler" />     -->
- 
+
+    <beans:bean id="CustomAuthenticationProvider" class="com.overcome.test.utils.CustomAuthenticationProvider" >
+<!--         <beans:property name="userService" ref="userService" /> -->
+<!--         <beans:property name="userFunctions" ref="userFunctions" /> -->
+    </beans:bean>
+
  	<authentication-manager alias="authentication-manager">
- 		<authentication-provider>
+ 		<!--<authentication-provider>
  			<user-service>
 				<user name="test" password="123" authorities="admin" />
 	    	</user-service>
- 		</authentication-provider>
+ 		</authentication-provider>-->
 <!--      	<authentication-provider ref="OcAuthenticationProvider" /> -->
-	</authentication-manager>	
+    <authentication-provider ref="CustomAuthenticationProvider" />
+	</authentication-manager>
 </beans:beans>
 <!-- SANDBOX -->
