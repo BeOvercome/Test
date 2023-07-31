@@ -20,10 +20,10 @@
 					<label for="exampleInputPassword1"><i class="fas fa-unlock-alt text-secondary"></i> Contraseña:</label> <input class="form-control" id="password" type="password" placeholder="Contraseña"
 						name="j_password" required>
 				</div>
-				<input type="submit" class="btn btn-primary btn-block" value="Comenzar">
+				<input type="submit" class="btn btn-primary btn-block" value="Iniciar sesion">
 			</form>
 			<div class="text-center mt-2">
-				<a id="forgot-password" class="d-block small text-muted" href="#forgot-password">Recuperar contraseña</a>
+				<a id="forgot-password" class="d-block small text-muted" href="#forgot-password">Registrarse</a>
 			</div>
 		</div>
 	</div>

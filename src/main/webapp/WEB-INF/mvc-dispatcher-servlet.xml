@@ -43,26 +43,39 @@
 	<bean id="OfyService" class="com.overcome.dao.OfyService" factory-method="getInstance">
 		<constructor-arg name="classes">
 			<array value-type="java.lang.Class">
-				<value>com.overcome.test.entity.ExampleEntity</value>
+				<value>com.overcome.test.entity.UserEntity</value>
+				<value>com.overcome.test.entity.TicketEntity</value>
 			</array>
 		</constructor-arg>
 	</bean>
 
 	<bean id="ServiceFactory" class="com.overcome.test.ServiceFactory" factory-method="getInstance">
-		<property name="exampleEntityService" ref="exampleEntityService" />
+		<property name="userEntityService" ref="userEntityService" />
 	</bean>
 
 	<!-- USER -->
-	<bean id="exampleEntityDao" class="com.overcome.dao.ObjectifyDao">
-		<constructor-arg name="clazz" value="com.overcome.test.entity.ExampleEntity" />
+	<bean id="userEntityDao" class="com.overcome.dao.ObjectifyDao">
+		<constructor-arg name="clazz" value="com.overcome.test.entity.UserEntity" />
 	</bean>
-	<bean id="exampleEntityService"
-		class="com.overcome.test.service.impl.ExampleEntityServiceImpl">
-		<property name="objectifyDao" ref="exampleEntityDao" />
+
+	<bean id="userEntityService"
+		  class="com.overcome.test.service.impl.UserEntityServiceImpl">
+		<property name="objectifyDao" ref="userEntityDao" />
+	</bean>
+	
+	<!-- TICKET -->
+	
+	<bean id="ticketEntityDao" class="com.overcome.dao.ObjectifyDao">
+		<constructor-arg name="clazz" value="com.overcome.test.entity.TicketEntity" />
+	</bean>
+	<bean id="ticketEntityService"
+		class="com.overcome.test.service.impl.TicketEntityServiceImpl">
+		<property name="objectifyDao" ref="ticketEntityDao" />
 	</bean>
 	
 	<!-- CONTROLLERS -->
 	
 	<bean id="GlobalController"   class="com.overcome.test.controller.GlobalController"  lazy-init="true" />
+	<bean id="TicketController" class="com.overcome.test.controller.TicketController" />
 
 </beans>
